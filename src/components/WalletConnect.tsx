@@ -4,7 +4,7 @@ import { useAccount, useDisconnect } from 'wagmi';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
-import { LogOut, User, Shield } from 'lucide-react';
+import { LogOut, User, MessageCircle } from 'lucide-react';
 
 export function WalletConnect() {
   const { address, isConnected } = useAccount();
