@@ -14,8 +14,8 @@ export function WalletConnect() {
     return (
       <Card className="w-full max-w-md mx-auto">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4 w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
-            <Shield className="w-6 h-6 text-white" />
+          <div className="mx-auto mb-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+            <MessageCircle className="w-6 h-6 text-white" />
           </div>
           <CardTitle className="text-xl">Connect Your Wallet</CardTitle>
           <CardDescription>
@@ -45,7 +45,7 @@ export function WalletConnect() {
               {address?.slice(0, 6)}...{address?.slice(-4)}
             </p>
           </div>
-          <Badge variant="secondary" className="bg-green-100 text-green-800">
+          <Badge variant="secondary" className="bg-blue-100 text-blue-800">
             Connected
           </Badge>
         </div>

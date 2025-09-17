@@ -1,35 +1,35 @@
-# Lock Chatter 🔒💬
+# Lock Chatter 💬🔐
 
-A revolutionary privacy-preserving chat application built with **Fully Homomorphic Encryption (FHE)** technology. Lock Chatter ensures complete message privacy while maintaining full chat functionality on the blockchain.
+A next-generation decentralized chat platform that revolutionizes private communication through **Fully Homomorphic Encryption (FHE)** technology. Experience truly secure conversations where your messages remain encrypted even during processing.
 
-## 🌟 Features
+## ✨ Key Features
 
-### 🔐 **End-to-End Encryption**
-- All messages are encrypted using FHE technology
-- Messages remain encrypted even during processing
-- Complete privacy protection for sensitive conversations
+### 💬 **Smart Chat Rooms**
+- Create public and private encrypted chat rooms
+- Real-time messaging with FHE protection
+- Intuitive room management and moderation
 
-### 🛡️ **FHE-Powered Security**
-- Fully Homomorphic Encryption allows computation on encrypted data
+### 🔐 **Advanced Encryption**
+- Messages encrypted using FHE technology
 - Zero-knowledge message processing
-- Advanced cryptographic protection using Zama's FHE technology
+- Complete privacy protection for all conversations
 
-### 🌐 **Decentralized Architecture**
+### 🌐 **Blockchain-Powered**
 - Built on Ethereum Sepolia testnet
-- Smart contract-based chat room management
+- Decentralized chat room management
 - No central authority or data storage
 
-### 💼 **Wallet Integration**
+### 💼 **Seamless Wallet Integration**
 - RainbowKit integration with latest versions
 - Support for multiple wallet providers
-- Seamless Web3 authentication
+- One-click Web3 authentication
 
-### 🏆 **Reputation System**
-- User reputation tracking with FHE encryption
-- Community-driven moderation
-- Trust-based chat room access
+### 🏆 **Community-Driven**
+- User reputation system with FHE encryption
+- Trust-based access control
+- Community moderation tools
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -51,7 +51,7 @@ A revolutionary privacy-preserving chat application built with **Fully Homomorph
    npm install
    ```
 
-3. **Set up environment variables**
+3. **Configure environment**
    ```bash
    cp ENV_SETUP.md .env.local
    # Edit .env.local with your configuration

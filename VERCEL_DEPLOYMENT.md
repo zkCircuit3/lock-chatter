@@ -43,23 +43,24 @@ Add the following environment variables in Vercel dashboard:
 
 ```env
 # Chain Configuration
-NEXT_PUBLIC_CHAIN_ID=11155111
-NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990
+VITE_CHAIN_ID=11155111
+VITE_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
 
 # Wallet Connect Configuration
-NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=2ec9743d0d0cd7fb94dee1a7e6d33475
+VITE_WALLET_CONNECT_PROJECT_ID=YOUR_WALLET_CONNECT_PROJECT_ID
 
 # Infura Configuration
-NEXT_PUBLIC_INFURA_API_KEY=b18fb7e6ca7045ac83c41157ab93f990
-NEXT_PUBLIC_RPC_URL=https://1rpc.io/sepolia
+VITE_INFURA_API_KEY=YOUR_INFURA_API_KEY
+VITE_RPC_URL=https://1rpc.io/sepolia
 
 # Contract Configuration (Update after deployment)
-NEXT_PUBLIC_CONTRACT_ADDRESS=
+VITE_CONTRACT_ADDRESS=
 ```
 
 **Important**: 
-- Replace `NEXT_PUBLIC_CONTRACT_ADDRESS` with your deployed contract address
+- Replace `VITE_CONTRACT_ADDRESS` with your deployed contract address
 - Keep `PRIVATE_KEY` and `ETHERSCAN_API_KEY` empty for security
+- Replace placeholder values with your actual API keys
 
 ### Step 4: Deploy
 
@@ -102,7 +103,7 @@ NEXT_PUBLIC_CONTRACT_ADDRESS=
 
 1. **In Vercel Dashboard**
    - Go to Project Settings → Environment Variables
-   - Update `NEXT_PUBLIC_CONTRACT_ADDRESS`
+   - Update `VITE_CONTRACT_ADDRESS`
    - Redeploy the application
 
 ### Step 3: Verify Functionality

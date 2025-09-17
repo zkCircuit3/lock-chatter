@@ -25,8 +25,8 @@ const Index = () => {
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
         <div className="w-full max-w-2xl">
           <div className="text-center mb-8">
-            <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
+            <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <MessageCircle className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl font-bold text-white mb-4">
               Lock Chatter
@@ -35,15 +35,15 @@ const Index = () => {
               Privacy-Preserving Chat with FHE Encryption
             </p>
             <div className="flex justify-center gap-4 mb-8">
-              <Badge variant="secondary" className="bg-green-100 text-green-800">
-                <Lock className="w-3 h-3 mr-1" />
-                End-to-End Encrypted
-              </Badge>
               <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                <Shield className="w-3 h-3 mr-1" />
-                FHE Protected
+                <MessageCircle className="w-3 h-3 mr-1" />
+                Encrypted Chat
               </Badge>
               <Badge variant="secondary" className="bg-purple-100 text-purple-800">
+                <Lock className="w-3 h-3 mr-1" />
+                FHE Protected
+              </Badge>
+              <Badge variant="secondary" className="bg-indigo-100 text-indigo-800">
                 <Users className="w-3 h-3 mr-1" />
                 Decentralized
               </Badge>
@@ -78,8 +78,8 @@ const Index = () => {
               </p>
             </div>
             <div className="flex gap-2">
-              <Badge variant="secondary" className="bg-green-100 text-green-800">
-                <Shield className="w-3 h-3 mr-1" />
+              <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                <MessageCircle className="w-3 h-3 mr-1" />
                 Connected
               </Badge>
             </div>
@@ -98,8 +98,8 @@ const Index = () => {
           <Card className="bg-slate-800/50 border-slate-700">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg flex items-center gap-2">
-                <Lock className="w-5 h-5 text-green-500" />
-                End-to-End Encryption
+                <MessageCircle className="w-5 h-5 text-blue-500" />
+                Encrypted Messaging
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -112,7 +112,7 @@ const Index = () => {
           <Card className="bg-slate-800/50 border-slate-700">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg flex items-center gap-2">
-                <Shield className="w-5 h-5 text-blue-500" />
+                <Lock className="w-5 h-5 text-purple-500" />
                 FHE Protection
               </CardTitle>
             </CardHeader>
@@ -126,7 +126,7 @@ const Index = () => {
           <Card className="bg-slate-800/50 border-slate-700">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg flex items-center gap-2">
-                <Users className="w-5 h-5 text-purple-500" />
+                <Users className="w-5 h-5 text-indigo-500" />
                 Decentralized
               </CardTitle>
             </CardHeader>

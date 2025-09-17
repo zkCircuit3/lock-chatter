@@ -14,7 +14,8 @@ import {
   Send, 
   Plus,
   Settings,
-  Shield
+  Shield,
+  User
 } from 'lucide-react';
 import { LockChatterContract, ChatRoom, ChatMessage } from '../lib/contract';
 
