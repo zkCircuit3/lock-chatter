@@ -15,7 +15,8 @@ import {
   Plus,
   Settings,
   Shield,
-  User
+  User,
+  CheckCircle
 } from 'lucide-react';
 import { LockChatterContract, ChatRoom, ChatMessage } from '../lib/contract';
 
@@ -34,6 +35,7 @@ export function ChatRoomComponent({ contract }: ChatRoomProps) {
   const [isPrivate, setIsPrivate] = useState(false);
   const [showCreateRoom, setShowCreateRoom] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (contract) {
@@ -81,24 +83,47 @@ export function ChatRoomComponent({ contract }: ChatRoomProps) {
   };
 
   const createRoom = async () => {
-    if (!contract || !newRoomName.trim()) return;
+    if (!newRoomName.trim()) return;
     
     setLoading(true);
     try {
-      const roomId = await contract.createChatRoom(
-        newRoomName,
-        newRoomDescription,
-        isPrivate
-      );
-      
-      // Refresh rooms list
-      await loadRooms();
+      if (contract) {
+        // Real contract interaction
+        const roomId = await contract.createChatRoom(
+          newRoomName,
+          newRoomDescription,
+          isPrivate
+        );
+        
+        // Refresh rooms list
+        await loadRooms();
+      } else {
+        // Mock room creation for demo purposes
+        const newRoom: ChatRoom = {
+          roomId: Date.now(), // Use timestamp as mock ID
+          name: newRoomName,
+          description: newRoomDescription,
+          creator: address || '0x000...',
+          isPrivate,
+          isActive: true,
+          memberCount: 1,
+          messageCount: 0,
+          createdAt: Date.now(),
+        };
+        
+        // Add to rooms list
+        setRooms(prev => [...prev, newRoom]);
+      }
       
       // Reset form
       setNewRoomName('');
       setNewRoomDescription('');
       setIsPrivate(false);
       setShowCreateRoom(false);
+      
+      // Show success message
+      setSuccessMessage(`Room "${newRoomName}" created successfully!`);
+      setTimeout(() => setSuccessMessage(null), 3000);
     } catch (error) {
       console.error('Error creating room:', error);
     } finally {
@@ -107,13 +132,27 @@ export function ChatRoomComponent({ contract }: ChatRoomProps) {
   };
 
   const joinRoom = async (roomId: number) => {
-    if (!contract) return;
-    
     try {
-      const success = await contract.joinRoom(roomId);
-      if (success) {
-        // Refresh rooms list
-        await loadRooms();
+      if (contract) {
+        // Real contract interaction
+        const success = await contract.joinRoom(roomId);
+        if (success) {
+          // Refresh rooms list
+          await loadRooms();
+        }
+      } else {
+        // Mock room joining for demo purposes
+        setRooms(prev => prev.map(room => 
+          room.roomId === roomId 
+            ? { ...room, memberCount: room.memberCount + 1 }
+            : room
+        ));
+        
+        // Select the joined room
+        const joinedRoom = rooms.find(room => room.roomId === roomId);
+        if (joinedRoom) {
+          setSelectedRoom(joinedRoom);
+        }
       }
     } catch (error) {
       console.error('Error joining room:', error);
@@ -121,15 +160,38 @@ export function ChatRoomComponent({ contract }: ChatRoomProps) {
   };
 
   const sendMessage = async () => {
-    if (!contract || !selectedRoom || !newMessage.trim()) return;
+    if (!selectedRoom || !newMessage.trim()) return;
     
     setLoading(true);
     try {
-      await contract.sendMessage(selectedRoom.roomId, newMessage, true);
-      setNewMessage('');
-      
-      // Refresh messages
-      loadMessages(selectedRoom.roomId);
+      if (contract) {
+        // Real contract interaction
+        await contract.sendMessage(selectedRoom.roomId, newMessage, true);
+        setNewMessage('');
+        
+        // Refresh messages
+        loadMessages(selectedRoom.roomId);
+      } else {
+        // Mock message sending for demo purposes
+        const newMsg: ChatMessage = {
+          messageId: Date.now(),
+          roomId: selectedRoom.roomId,
+          sender: address || '0x000...',
+          encryptedContent: newMessage,
+          isEncrypted: true,
+          timestamp: Date.now(),
+        };
+        
+        setMessages(prev => [...prev, newMsg]);
+        setNewMessage('');
+        
+        // Update room message count
+        setRooms(prev => prev.map(room => 
+          room.roomId === selectedRoom.roomId 
+            ? { ...room, messageCount: room.messageCount + 1 }
+            : room
+        ));
+      }
     } catch (error) {
       console.error('Error sending message:', error);
     } finally {
@@ -138,30 +200,51 @@ export function ChatRoomComponent({ contract }: ChatRoomProps) {
   };
 
   const loadMessages = async (roomId: number) => {
-    if (!contract) return;
-    
     try {
-      // In a real implementation, you would fetch messages from the contract
-      // For now, we'll use mock data
-      const mockMessages: ChatMessage[] = [
-        {
-          messageId: 1,
-          roomId,
-          sender: '0x123...',
-          encryptedContent: 'Hello everyone!',
-          isEncrypted: true,
-          timestamp: Date.now() - 3600000,
-        },
-        {
-          messageId: 2,
-          roomId,
-          sender: '0x456...',
-          encryptedContent: 'This is an encrypted message',
-          isEncrypted: true,
-          timestamp: Date.now() - 1800000,
-        },
-      ];
-      setMessages(mockMessages);
+      if (contract) {
+        // In a real implementation, you would fetch messages from the contract
+        // For now, we'll use mock data
+        const mockMessages: ChatMessage[] = [
+          {
+            messageId: 1,
+            roomId,
+            sender: '0x123...',
+            encryptedContent: 'Hello everyone!',
+            isEncrypted: true,
+            timestamp: Date.now() - 3600000,
+          },
+          {
+            messageId: 2,
+            roomId,
+            sender: '0x456...',
+            encryptedContent: 'This is an encrypted message',
+            isEncrypted: true,
+            timestamp: Date.now() - 1800000,
+          },
+        ];
+        setMessages(mockMessages);
+      } else {
+        // Mock messages for demo purposes
+        const mockMessages: ChatMessage[] = [
+          {
+            messageId: 1,
+            roomId,
+            sender: '0x123...',
+            encryptedContent: 'Welcome to the chat room!',
+            isEncrypted: true,
+            timestamp: Date.now() - 3600000,
+          },
+          {
+            messageId: 2,
+            roomId,
+            sender: '0x456...',
+            encryptedContent: 'This is a demo message with FHE encryption',
+            isEncrypted: true,
+            timestamp: Date.now() - 1800000,
+          },
+        ];
+        setMessages(mockMessages);
+      }
     } catch (error) {
       console.error('Error loading messages:', error);
     }
@@ -224,10 +307,17 @@ export function ChatRoomComponent({ contract }: ChatRoomProps) {
                   disabled={loading || !newRoomName.trim()}
                   className="w-full"
                 >
-                  Create Room
+                  {loading ? 'Creating...' : 'Create Room'}
                 </Button>
               </CardContent>
             </Card>
+          )}
+          
+          {successMessage && (
+            <div className="mb-4 p-3 bg-green-100 border border-green-200 rounded-lg flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-green-600" />
+              <span className="text-sm text-green-800">{successMessage}</span>
+            </div>
           )}
         </div>
         
