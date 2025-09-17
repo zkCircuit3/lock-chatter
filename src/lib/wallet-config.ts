@@ -9,7 +9,7 @@ export const config = getDefaultConfig({
 });
 
 export const contractConfig = {
-  address: import.meta.env.VITE_CONTRACT_ADDRESS as `0x${string}`,
+  address: (import.meta.env.VITE_CONTRACT_ADDRESS || '') as `0x${string}`,
   abi: [
     // Contract ABI will be generated after compilation
   ],
