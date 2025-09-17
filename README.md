@@ -1,73 +1,219 @@
-# Welcome to your Lovable project
+# Lock Chatter 🔒💬
 
-## Project info
+A revolutionary privacy-preserving chat application built with **Fully Homomorphic Encryption (FHE)** technology. Lock Chatter ensures complete message privacy while maintaining full chat functionality on the blockchain.
 
-**URL**: https://lovable.dev/projects/8e022e40-2320-42e6-b90c-44ce84a81b35
+## 🌟 Features
 
-## How can I edit this code?
+### 🔐 **End-to-End Encryption**
+- All messages are encrypted using FHE technology
+- Messages remain encrypted even during processing
+- Complete privacy protection for sensitive conversations
 
-There are several ways of editing your application.
+### 🛡️ **FHE-Powered Security**
+- Fully Homomorphic Encryption allows computation on encrypted data
+- Zero-knowledge message processing
+- Advanced cryptographic protection using Zama's FHE technology
 
-**Use Lovable**
+### 🌐 **Decentralized Architecture**
+- Built on Ethereum Sepolia testnet
+- Smart contract-based chat room management
+- No central authority or data storage
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/8e022e40-2320-42e6-b90c-44ce84a81b35) and start prompting.
+### 💼 **Wallet Integration**
+- RainbowKit integration with latest versions
+- Support for multiple wallet providers
+- Seamless Web3 authentication
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🏆 **Reputation System**
+- User reputation tracking with FHE encryption
+- Community-driven moderation
+- Trust-based chat room access
 
-**Use your preferred IDE**
+## 🚀 Quick Start
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js (v18 or higher)
+- npm or yarn
+- Git
+- MetaMask or compatible Web3 wallet
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/zkCircuit3/lock-chatter.git
+   cd lock-chatter
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. **Set up environment variables**
+   ```bash
+   cp ENV_SETUP.md .env.local
+   # Edit .env.local with your configuration
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to `http://localhost:5173`
+
+## 🔧 Smart Contract Deployment
+
+### 1. Compile Contracts
+```bash
+npm run compile
 ```
 
-**Edit a file directly in GitHub**
+### 2. Run Tests
+```bash
+npm run test
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 3. Deploy to Sepolia
+```bash
+npm run deploy
+```
 
-**Use GitHub Codespaces**
+## 📁 Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+lock-chatter/
+├── contracts/              # Smart contracts
+│   └── LockChatter.sol    # Main FHE chat contract
+├── scripts/                # Deployment scripts
+│   └── deploy.ts          # Contract deployment
+├── src/
+│   ├── components/         # React components
+│   │   ├── ui/            # Reusable UI components
+│   │   ├── ChatRoom.tsx   # Main chat interface
+│   │   └── WalletConnect.tsx # Wallet connection
+│   ├── lib/               # Utility functions
+│   │   ├── contract.ts    # Contract interactions
+│   │   ├── fhe-utils.ts   # FHE utilities
+│   │   └── wallet-config.ts # Wallet configuration
+│   ├── pages/             # Page components
+│   │   ├── Index.tsx      # Home page
+│   │   └── NotFound.tsx   # 404 page
+│   └── App.tsx            # Main application
+├── public/                # Static assets
+├── hardhat.config.ts      # Hardhat configuration
+└── package.json
+```
 
-## What technologies are used for this project?
+## 🔐 Privacy & Security Architecture
 
-This project is built with:
+### FHE Implementation
+- **Encrypted Data Types**: All sensitive data uses FHE encryption
+- **Zero-Knowledge Processing**: Messages processed without decryption
+- **Secure Computation**: FHE operations on encrypted chat data
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Smart Contract Features
+- **Chat Rooms**: Create public/private encrypted chat rooms
+- **Message Encryption**: All messages encrypted with FHE
+- **User Profiles**: Encrypted user reputation and activity
+- **Access Control**: FHE-based room membership verification
 
-## How can I deploy this project?
+### Security Measures
+- **End-to-End Encryption**: Messages encrypted from sender to recipient
+- **Decentralized Storage**: No central data repository
+- **Immutable Records**: All interactions recorded on blockchain
+- **Privacy by Design**: FHE ensures data never exposed in plaintext
 
-Simply open [Lovable](https://lovable.dev/projects/8e022e40-2320-42e6-b90c-44ce84a81b35) and click on Share -> Publish.
+## 🌐 Network Configuration
 
-## Can I connect a custom domain to my Lovable project?
+### Sepolia Testnet
+- **Chain ID**: 11155111
+- **RPC URL**: https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990
+- **Wallet Connect**: 2ec9743d0d0cd7fb94dee1a7e6d33475
 
-Yes, you can!
+### Environment Variables
+```env
+NEXT_PUBLIC_CHAIN_ID=11155111
+NEXT_PUBLIC_RPC_URL=https://sepolia.infura.io/v3/b18fb7e6ca7045ac83c41157ab93f990
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=2ec9743d0d0cd7fb94dee1a7e6d33475
+NEXT_PUBLIC_CONTRACT_ADDRESS=<deployed_contract_address>
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🛠️ Technology Stack
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Frontend
+- **React 18** - Modern UI framework
+- **TypeScript** - Type-safe development
+- **Vite** - Fast build tool
+- **Tailwind CSS** - Utility-first styling
+- **shadcn/ui** - Beautiful UI components
+
+### Blockchain
+- **Solidity** - Smart contract language
+- **Hardhat** - Development framework
+- **FHEVM** - Fully Homomorphic Encryption
+- **OpenZeppelin** - Security libraries
+
+### Wallet Integration
+- **RainbowKit** - Wallet connection UI
+- **Wagmi** - React hooks for Ethereum
+- **Viem** - TypeScript Ethereum library
+
+## 🚀 Deployment
+
+### Vercel Deployment
+
+1. **Connect to Vercel**
+   - Import project from GitHub
+   - Configure build settings
+
+2. **Environment Variables**
+   - Add all required environment variables
+   - Set production contract address
+
+3. **Build Configuration**
+   ```json
+   {
+     "buildCommand": "npm run build",
+     "outputDirectory": "dist",
+     "installCommand": "npm install"
+   }
+   ```
+
+4. **Deploy**
+   - Automatic deployment on push to main
+   - Custom domain configuration available
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔗 Links
+
+- **GitHub Repository**: https://github.com/zkCircuit3/lock-chatter
+- **Live Demo**: [Deploy to Vercel for live demo]
+- **Documentation**: [Link to detailed docs]
+
+## 🙏 Acknowledgments
+
+- **Zama** - FHE technology and FHEVM
+- **RainbowKit** - Wallet connection framework
+- **OpenZeppelin** - Security libraries
+- **shadcn/ui** - Beautiful UI components
+
+---
+
+**Built with ❤️ by zkCircuit3**
+
+*Privacy is not a privilege, it's a right. Lock Chatter ensures your conversations stay private.*
